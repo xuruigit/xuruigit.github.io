@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://xurui.pro/2018/09/26/YourKit-Java性能分析工具的应用/YourKit-06.png">
 <meta property="og:image" content="http://xurui.pro/2018/09/26/YourKit-Java性能分析工具的应用/YourKit-08.png">
 <meta property="og:image" content="http://xurui.pro/2018/09/26/YourKit-Java性能分析工具的应用/YourKit-09.png">
-<meta property="og:updated_time" content="2018-09-29T07:53:47.292Z">
+<meta property="og:updated_time" content="2018-09-29T09:15:13.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="YourKit-Java性能分析工具的应用">
 <meta name="twitter:description" content="目前在我们应用开发过程中对 TPS/QPS 都会有要求，所以我们需要知道我们开发的服务性能如何，如果不满足要求，要知道瓶颈在哪里，如何进行优化。YourKit 可以帮助我们做到这一点。    YourKit 是一款用于分析Java和.Net应用程序的工具，在程序运行过程中对CPU、内存进行分析，直观的展示方法调用耗时、调用栈、调用次数、执行的sql、内存占用情况等信息">
@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-29 15:53:47" itemprop="dateModified" datetime="2018-09-29T15:53:47+08:00">2018-09-29</time>
+                <time title="修改时间：2018-09-29 17:15:13" itemprop="dateModified" datetime="2018-09-29T17:15:13+08:00">2018-09-29</time>
               
             
           </span>
@@ -387,12 +387,6 @@
 <p>YourKit 是一款用于分析Java和.Net应用程序的工具，在程序运行过程中对CPU、内存进行分析，直观的展示方法调用耗时、调用栈、调用次数、执行的sql、内存占用情况等信息</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>我们选取几种开发过程常见的场景学习 YourKit 的应用  </p>
-<ol>
-<li>有一个调用链很长的方法，耗时很长，如何知道瓶颈在哪？</li>
-<li>系统响应慢，发现CPU使用率一直很高，如何确认问题点？</li>
-<li>系统OOM，怀疑内存泄漏，如何定位问题？</li>
-</ol>
 <h2 id="安装与启动"><a href="#安装与启动" class="headerlink" title="安装与启动"></a>安装与启动</h2><p>YourKit的安装和使用特别简单：</p>
 <ul>
 <li><p>下载、安装完成后YourKit会提示要安装哪个 IDE 的插件，选了 IntelliJ IDEA之后，插件自动安装</p>
@@ -405,6 +399,12 @@
 <li><p>启动后的界面：<br><img src="/2018/09/26/YourKit-Java性能分析工具的应用/YourKit-04.png" alt="YourKit-04"></p>
 </li>
 </ul>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>我们选取几种开发过程常见的场景学习 YourKit 的应用  </p>
+<ol>
+<li>有一个调用链很长的方法，耗时很长，如何知道瓶颈在哪？</li>
+<li>系统响应慢，发现CPU使用率一直很高，如何确认问题点？</li>
+<li>系统OOM，怀疑内存泄漏，如何定位问题？</li>
+</ol>
 <h3 id="场景一：调用链很长的方法，耗时很长，如何知道瓶颈在哪？"><a href="#场景一：调用链很长的方法，耗时很长，如何知道瓶颈在哪？" class="headerlink" title="场景一：调用链很长的方法，耗时很长，如何知道瓶颈在哪？"></a>场景一：调用链很长的方法，耗时很长，如何知道瓶颈在哪？</h3><p>商品发布功能目前耗时1600ms+，目标耗时500ms-，针对这种性能的分析使用 CPU 分析，步骤：</p>
 <ol>
 <li><p><strong>Start CPU Profiling</strong><br>开始监控后，可以实时看到CPU的基本信息，要想查看详细信息，保存快照后可以查看<br>支持三种分析模式：</p>
@@ -633,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装与启动"><span class="nav-number">2.</span> <span class="nav-text">安装与启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景一：调用链很长的方法，耗时很长，如何知道瓶颈在哪？"><span class="nav-number">2.1.</span> <span class="nav-text">场景一：调用链很长的方法，耗时很长，如何知道瓶颈在哪？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景二：系统响应慢，发现CPU使用率一直很高，如何确认问题点？"><span class="nav-number">2.2.</span> <span class="nav-text">场景二：系统响应慢，发现CPU使用率一直很高，如何确认问题点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景三：系统可用内存不足"><span class="nav-number">2.3.</span> <span class="nav-text">场景三：系统可用内存不足</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类似工具"><span class="nav-number">3.</span> <span class="nav-text">类似工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装与启动"><span class="nav-number">1.</span> <span class="nav-text">安装与启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">2.</span> <span class="nav-text">应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景一：调用链很长的方法，耗时很长，如何知道瓶颈在哪？"><span class="nav-number">2.1.</span> <span class="nav-text">场景一：调用链很长的方法，耗时很长，如何知道瓶颈在哪？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景二：系统响应慢，发现CPU使用率一直很高，如何确认问题点？"><span class="nav-number">2.2.</span> <span class="nav-text">场景二：系统响应慢，发现CPU使用率一直很高，如何确认问题点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景三：系统可用内存不足"><span class="nav-number">2.3.</span> <span class="nav-text">场景三：系统可用内存不足</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类似工具"><span class="nav-number">3.</span> <span class="nav-text">类似工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
