@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="最近公司推行《阿里巴巴编码规范》，个人挺有收获，对团队也很有益处，将个人觉得比较好的或者之前忽略的点列一下，做个总结。 开发中有一些规范细节，没有对错之分，团队中也会有分歧，阿里的规范相当于给争论定结论，便于团队统一认知。国内应该也只有阿里出这个规范才能让人认可吧。 阿里云提供了线上考试服务，9块钱检测下学习成果还是很合算的，时间给的很充裕，大部分是多选题，小部分单选题，最后还给了个证书，现在网易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《阿里巴巴编码规范》读后感～">
+<meta property="og:url" content="http://xurui.pro/2018/11/14/《阿里巴巴编码规范》读后感～/index.html">
+<meta property="og:site_name" content="徐锐">
+<meta property="og:description" content="最近公司推行《阿里巴巴编码规范》，个人挺有收获，对团队也很有益处，将个人觉得比较好的或者之前忽略的点列一下，做个总结。 开发中有一些规范细节，没有对错之分，团队中也会有分歧，阿里的规范相当于给争论定结论，便于团队统一认知。国内应该也只有阿里出这个规范才能让人认可吧。 阿里云提供了线上考试服务，9块钱检测下学习成果还是很合算的，时间给的很充裕，大部分是多选题，小部分单选题，最后还给了个证书，现在网易">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://xurui.pro/2018/11/14/《阿里巴巴编码规范》读后感～/阿里巴巴规范证书.jpg">
+<meta property="og:updated_time" content="2018-11-14T11:53:32.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《阿里巴巴编码规范》读后感～">
+<meta name="twitter:description" content="最近公司推行《阿里巴巴编码规范》，个人挺有收获，对团队也很有益处，将个人觉得比较好的或者之前忽略的点列一下，做个总结。 开发中有一些规范细节，没有对错之分，团队中也会有分歧，阿里的规范相当于给争论定结论，便于团队统一认知。国内应该也只有阿里出这个规范才能让人认可吧。 阿里云提供了线上考试服务，9块钱检测下学习成果还是很合算的，时间给的很充裕，大部分是多选题，小部分单选题，最后还给了个证书，现在网易">
+<meta name="twitter:image" content="http://xurui.pro/2018/11/14/《阿里巴巴编码规范》读后感～/阿里巴巴规范证书.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://xurui.pro/2018/11/14/《阿里巴巴编码规范》读后感～/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>《阿里巴巴编码规范》读后感～ | 徐锐</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">徐锐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xurui.pro/2018/11/14/《阿里巴巴编码规范》读后感～/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐锐">
+      <meta itemprop="description" content="基于Hexo搭建的个人博客">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="徐锐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《阿里巴巴编码规范》读后感～
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-14 10:36:52 / 修改时间：19:53:32" itemprop="dateCreated datePublished" datetime="2018-11-14T10:36:52+08:00">2018-11-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近公司推行《阿里巴巴编码规范》，个人挺有收获，对团队也很有益处，将个人觉得比较好的或者之前忽略的点列一下，做个总结。</p>
+<p>开发中有一些规范细节，没有对错之分，团队中也会有分歧，阿里的规范相当于给争论定结论，便于团队统一认知。国内应该也只有阿里出这个规范才能让人认可吧。</p>
+<p>阿里云提供了线上考试服务，9块钱检测下学习成果还是很合算的，时间给的很充裕，大部分是多选题，小部分单选题，最后还给了个证书，现在网易云课堂之类的也都这么玩：<br><img src="/2018/11/14/《阿里巴巴编码规范》读后感～/阿里巴巴规范证书.jpg" alt="证书"><br><a id="more"></a></p>
+<h3 id="编程规约"><a href="#编程规约" class="headerlink" title="编程规约"></a>编程规约</h3><h4 id="1-命名风格"><a href="#1-命名风格" class="headerlink" title="1.命名风格"></a>1.命名风格</h4><blockquote>
+<ol>
+<li>【参考】各层命名规约:<ul>
+<li>Service/DAO层方法命名规约<ol>
+<li>获取单个对象的方法用get做前缀。</li>
+<li>获取多个对象的方法用list做前缀，复数形式结尾如:listObjects。 </li>
+<li>获取统计值的方法用count做前缀。</li>
+<li>插入的方法用save/insert做前缀。</li>
+<li>删除的方法用remove/delete做前缀。</li>
+<li>修改的方法用update做前缀。</li>
+</ol>
+</li>
+<li>领域模型命名规约<ol>
+<li>数据对象:xxxDO，xxx即为数据表名。</li>
+<li>数据传输对象:xxxDTO，xxx为业务领域相关的名称。 </li>
+<li>展示对象:xxxVO，xxx一般为网页名称。</li>
+<li>POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>编码十分钟，命名半小时… 码业务代码时，统一的命名风格便于搜索、理解，比如：获取单个对象，用<code>get</code>也行、用<code>find</code>也行，各人习惯不同，但是一个项目里应该只有其中一个风格。另外一个优点是：便于利用spring的AOP，比如使用spring的声明事务，根据方法名前缀就可以配置不同的事物隔离级别</p>
+<h4 id="2-常量定义"><a href="#2-常量定义" class="headerlink" title="2.常量定义"></a>2.常量定义</h4><p>无</p>
+<h4 id="3-代码格式"><a href="#3-代码格式" class="headerlink" title="3.代码格式"></a>3.代码格式</h4><p>结合 Google 的<a href="https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml" target="_blank" rel="noopener">Java Code Style</a>食用，有效降低阅读他人代码的眩晕感。</p>
+<h4 id="4-OOP规约"><a href="#4-OOP规约" class="headerlink" title="4.OOP规约"></a>4.OOP规约</h4><p>OOP 面向对象编程…</p>
+<blockquote>
+<ul>
+<li><p>关于基本数据类型与包装数据类型的使用标准如下:</p>
+<ul>
+<li>【强制】所有的POJO类属性必须使用包装数据类型。</li>
+<li>【强制】RPC方法的返回值和参数必须使用包装数据类型。</li>
+<li>【推荐】所有的局部变量使用基本数据类型。<br>说明:POJO 类属性没有初值是提醒使用者在需要使用时，必须自己显式地进行赋值，任何<br>NPE 问题，或者入库检查，都由使用者来保证。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>第三条”所有的局部变量使用基本数据类型”是何意？ 避免拆装箱？还是避免大小比较错误（Long == Long）？</p>
+<blockquote>
+<ul>
+<li>【强制】定义 DO/DTO/VO 等 POJO 类时，不要设定任何属性默认值。</li>
+</ul>
+</blockquote>
+<p>POJO也不要有业务逻辑</p>
+<blockquote>
+<ul>
+<li>【强制】POJO 类必须写 toString 方法。使用 IDE 中的工具:source&gt; generate toString 时，如果继承了另一个 POJO 类，注意在前面加一下 super.toString。</li>
+</ul>
+</blockquote>
+<p>这一条有异议，目前都是使用<a href="https://projectlombok.org/" target="_blank" rel="noopener">lombok</a>的 <code>@Data</code> 注解来简化POJO的代码，不应该手工去生成toString代码</p>
+<h4 id="5-集合处理"><a href="#5-集合处理" class="headerlink" title="5.集合处理"></a>5.集合处理</h4><blockquote>
+<ul>
+<li>【推荐】集合初始化时，指定集合初始值大小。<br>说明:HashMap使用HashMap(int initialCapacity) 初始化。<br>正例:initialCapacity = (需要存储的元素个数 / 负载因子) + 1。注意负载因子(即 loader factor)默认为 0.75，如果暂时无法确定初始值大小，请设置为 16(即默认值)。 反例:HashMap 需要放置 1024 个元素，由于没有设置容量初始大小，随着元素不断增加，容 量 7 次被迫扩大，resize 需要重建 hash 表，严重影响性能。</li>
+</ul>
+</blockquote>
+<p>阿里巴巴规范插件，如果没有设置默认值，会有WARN，强迫我们去评估HashMap可能的大小</p>
+<blockquote>
+<ul>
+<li>【推荐】使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历。<br>说明:keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出 key 所对应的 value。而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效 率更高。如果是 JDK8，使用 Map.foreach 方法。<br>正例:values()返回的是 V 值集合，是一个 list 集合对象;keySet()返回的是 K 值集合，是 一个 Set 集合对象;entrySet()返回的是 K-V 值组合集合。</li>
+</ul>
+</blockquote>
+<p>这条列出来是为了提醒自己有意识的去使用JDK8的语法糖</p>
+<h4 id="6-并发处理"><a href="#6-并发处理" class="headerlink" title="6.并发处理"></a>6.并发处理</h4><blockquote>
+<ul>
+<li>【强制】线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，这样<br>的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。 说明:Executors 返回的线程池对象的弊端如下:  <ul>
+<li>FixedThreadPool 和 SingleThreadPool:<br>允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM。</li>
+<li>CachedThreadPool 和 ScheduledThreadPool:<br>允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>目前项目中有使用CachedThreadPool， 如果100个请求一起过来，会创建100个线程去执行，很容易 OOM<br>而使用ThreadPoolExecutor时，设置多大的核心线程数和最大线程数也是门艺术，后面要单独总结一篇。</p>
+<blockquote>
+<ul>
+<li>【推荐】在并发场景下，通过双重检查锁(double-checked locking)实现延迟初始化的优 化问题隐患(可参考 The “Double-Checked Locking is Broken” Declaration)，推荐解 决方案中较为简单一种(适用于 JDK5 及以上版本)，将目标属性声明为 volatile 型。</li>
+</ul>
+</blockquote>
+<p>这里涉及2个概念<strong>指令重排</strong>、<strong>内存屏障</strong>，美团有篇博文：<a href="https://tech.meituan.com/java_memory_reordering.html" target="_blank" rel="noopener">Java内存访问重排序的研究</a></p>
+<p>规范上没有写正例，补充一下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyInitDemo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Helper helper; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Helper <span class="title">getHelper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (helper == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123; </span><br><span class="line">                <span class="keyword">if</span> (helper == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    helper = <span class="keyword">new</span> Helper();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> helper; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// other methods and fields...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="7-控制语句"><a href="#7-控制语句" class="headerlink" title="7.控制语句"></a>7.控制语句</h4><blockquote>
+<ul>
+<li>【参考】下列情形，需要进行参数校验:<ul>
+<li>调用频次低的方法。</li>
+<li>执行时间开销很大的方法。此情形中，参数校验时间几乎可以忽略不计，但如果因为参<br>数错误导致中间执行回退，或者错误，那得不偿失。</li>
+<li>需要极高稳定性和可用性的方法。</li>
+<li>对外提供的开放接口，不管是RPC/API/HTTP接口。 </li>
+<li>敏感权限入口。</li>
+</ul>
+</li>
+<li>【参考】下列情形，不需要进行参数校验:<ul>
+<li>极有可能被循环调用的方法。但在方法说明里必须注明外部参数检查要求。</li>
+<li>底层调用频度比较高的方法。毕竟是像纯净水过滤的最后一道，参数错误不太可能到底<br>层才会暴露问题。一般 DAO 层与 Service 层都在同一个应用中，部署在同一台服务器中，所以 DAO 的参数校验，可以省略。</li>
+<li>被声明成private只会被自己代码所调用的方法，如果能够确定调用方法的代码传入参数已经做过检查或者肯定不会有问题，此时可以不校验参数。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>以上2点总结的特别实用。</p>
+<h4 id="8-注释规约"><a href="#8-注释规约" class="headerlink" title="8.注释规约"></a>8.注释规约</h4><blockquote>
+<p>【强制】所有的枚举类型字段必须要有注释，说明每个数据项的用途。</p>
+</blockquote>
+<p>这一点对【强制】有异议，一般枚举都有获取枚举名称的需求，所以我们定义成 <code>END(0, &quot;已终止&quot;),</code> 这时已经不需要对每个枚举进行说明，所以这一条我觉得【建议】即可。</p>
+<h3 id="异常日志"><a href="#异常日志" class="headerlink" title="异常日志"></a>异常日志</h3><h4 id="1-异常处理"><a href="#1-异常处理" class="headerlink" title="1. 异常处理"></a>1. 异常处理</h4><blockquote>
+<ul>
+<li>【推荐】方法的返回值可以为 null，不强制返回空集合，或者空对象等，必须添加注释充分 说明什么情况下会返回 null 值。<br>说明:本手册明确防止 NPE 是调用者的责任。即使被调用方法返回空集合或者空对象，对调用者来说，也并非高枕无忧，必须考虑到远程调用失败、序列化失败、运行时异常等场景返回<br>null 的情况。</li>
+</ul>
+</blockquote>
+<p>明确了防止 NPE 是调用者的责任。</p>
+<blockquote>
+<ul>
+<li>【参考】对于公司外的 http/api 开放接口必须使用“错误码”;而应用内部推荐异常抛出; 跨应用间 RPC 调用优先考虑使用 Result 方式，封装 isSuccess()方法、“错误码”、“错误简 短信息”。</li>
+</ul>
+</blockquote>
+<p>明确了内部抛异常，外部包装Response的处理方式。这样事先要规划外观层，对外提供的接口通过Facade包装一下。</p>
+<h4 id="2-日志规约"><a href="#2-日志规约" class="headerlink" title="2.日志规约"></a>2.日志规约</h4><p>无</p>
+<h4 id="3-单元测试"><a href="#3-单元测试" class="headerlink" title="3.单元测试"></a>3.单元测试</h4><p>分布式系统中的单元测试工作量真是很大，内容依赖硬编码，在急速迭代的今天还能做好单元测试的团队有多少呢？</p>
+<h4 id="4-安全规约"><a href="#4-安全规约" class="headerlink" title="4.安全规约"></a>4.安全规约</h4><p>无</p>
+<h3 id="MySql数据库"><a href="#MySql数据库" class="headerlink" title="MySql数据库"></a>MySql数据库</h3><h4 id="建表规约"><a href="#建表规约" class="headerlink" title="建表规约"></a>建表规约</h4><blockquote>
+<ul>
+<li>【强制】主键索引名为 pk<em>字段名;唯一索引名为 uk</em>字段名;普通索引名则为 idx_字段名。<br>说明：<ul>
+<li>pk_ 即 primary key; </li>
+<li>uk_ 即 unique key;</li>
+<li>idx_ 即 index 的简称。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>有时候会忘记</p>
+<blockquote>
+<ul>
+<li>【强制】varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长 度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索 引效率。</li>
+</ul>
+</blockquote>
+<p>明确了 varchar 和 text 应用场景</p>
+<blockquote>
+<ul>
+<li>【推荐】单表行数超过 500 万行或者单表容量超过 2GB，才推荐进行分库分表。 说明:如果预计三年后的数据量根本达不到这个级别，请不要在创建表时就分库分表。</li>
+</ul>
+</blockquote>
+<p>明确了分库分表的阈值：500 万行或者单表容量超过 2GB</p>
+<h4 id="索引规约"><a href="#索引规约" class="headerlink" title="索引规约"></a>索引规约</h4><blockquote>
+<ul>
+<li>【强制】业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引。<br>  说明:不要以为唯一索引影响了 insert 速度，这个速度损耗可以忽略，但提高查找速度是明显的;另外，即使在应用层做了非常完善的校验控制，只要没有唯一索引，根据墨菲定律，必然有脏数据产生。</li>
+</ul>
+</blockquote>
+<p>明确了唯一性是程序保证还是db保证的问题。</p>
+<blockquote>
+<ul>
+<li>【强制】在 varchar 字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据 实际文本区分度决定索引长度即可。<br>   说明:索引的长度与区分度是一对矛盾体，一般对字符串类型数据，长度为 20 的索引，区分度会高达 90%以上，可以使用 count(distinct left(列名, 索引长度))/count(*)的区分度 来确定。</li>
+</ul>
+</blockquote>
+<p>这点没有关注过，做个备忘</p>
+<blockquote>
+<ul>
+<li>【推荐】如果有 order by 的场景，请注意利用索引的有序性。order by 最后的字段是组合索引的一部分，并且放在索引组合顺序的最后，避免出现 file_sort 的情况，影响查询性能。 正例:where a=? and b=? order by c; 索引:a_b_c 反例:索引中有范围查找，那么索引有序性无法利用，如:WHERE a&gt;10 ORDER BY b; 索引 a_b 无法排序。</li>
+</ul>
+</blockquote>
+<p>order by 是对sql性能影响比较大的操作</p>
+<blockquote>
+<ul>
+<li>【推荐】SQL 性能优化的目标:至少要达到 range 级别，要求是 ref 级别，如果可以是 consts 最好。<br>说明:<ul>
+<li>consts 单表中最多只有一个匹配行(主键或者唯一索引)，在优化阶段即可读取到数据。 </li>
+<li>ref 指的是使用普通的索引(normal index)。</li>
+<li>range 对索引进行范围检索。<br>反例:explain 表的结果，type=index，索引物理文件全扫描，速度非常慢，这个 index 级 别比较 range 还低，与全表扫描是小巫见大巫。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>善用 <code>EXPLAIN</code></p>
+<blockquote>
+<ul>
+<li>【推荐】防止因字段类型不同造成的隐式转换，导致索引失效。</li>
+</ul>
+</blockquote>
+<p>这里要说明的是，字段如果是数字类型不会导致索引失效，比如 <code>id = &#39;1&#39;</code>，索引还是有效的， 而 varcher 则会失效，比如 <code>name = 1</code> (MySql是把name字段转成整形，所以不走索引)</p>
+<p>为什么mysql没有将 1 先转换为 ‘1’ 的优化步骤？ </p>
+<p>这点从这篇博客中学习：<a href="https://www.cnblogs.com/liuzhuqing/p/7641542.html" target="_blank" rel="noopener">https://www.cnblogs.com/liuzhuqing/p/7641542.html</a></p>
+<h4 id="SQL-语句"><a href="#SQL-语句" class="headerlink" title="SQL 语句"></a>SQL 语句</h4><blockquote>
+<ul>
+<li>【参考】如果有国际化需要，所有的字符存储与表示，均以 utf-8 编码，注意字符统计函数的区别。<br>说明:  <ul>
+<li>SELECT LENGTH(“轻松工作”); 返回为12</li>
+<li>SELECT CHARACTER_LENGTH(“轻松工作”); 返回为4 </li>
+<li>如果需要存储表情，那么选择 utf8mb4 来进行存储，注意它与 utf-8 编码的区别。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>哈哈 这是之前自己写过的BUG，注意区分 LENGTH 和 CHARACTER_LENGTH</p>
+<blockquote>
+<ul>
+<li>【参考】@Transactional 事务不要滥用。事务会影响数据库的 QPS，另外使用事务的地方需 要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等。</li>
+</ul>
+</blockquote>
+<p>事务范围尽可能的小，事务范围内只做写入操作（只在manager层做事务），数据的校验和组装计算放到事务之外，事务的回滚也要考虑场景与成本</p>
+<h3 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h3><h4 id="应用分层"><a href="#应用分层" class="headerlink" title="应用分层"></a>应用分层</h4><p>无</p>
+<h4 id="二方库依赖"><a href="#二方库依赖" class="headerlink" title="二方库依赖"></a>二方库依赖</h4><blockquote>
+<ul>
+<li>【强制】线上应用不要依赖 SNAPSHOT 版本(安全包除外)。<br>说明:不依赖 SNAPSHOT 版本是保证应用发布的幂等性。另外，也可以加快编译时的打包构建。</li>
+</ul>
+</blockquote>
+<p>SNAPSHOT 风险高，别人切个分支 deploy 一下就有可能导致线上故障</p>
+<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><p>暂无</p>
+<h3 id="设计规约"><a href="#设计规约" class="headerlink" title="设计规约"></a>设计规约</h3><p>暂无</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/26/YourKit-Java性能分析工具的应用/" rel="next" title="YourKit-Java性能分析工具的应用">
+                <i class="fa fa-chevron-left"></i> YourKit-Java性能分析工具的应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">徐锐</p>
+              <p class="site-description motion-element" itemprop="description">基于Hexo搭建的个人博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#编程规约"><span class="nav-number">1.</span> <span class="nav-text">编程规约</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-命名风格"><span class="nav-number">1.1.</span> <span class="nav-text">1.命名风格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-常量定义"><span class="nav-number">1.2.</span> <span class="nav-text">2.常量定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-代码格式"><span class="nav-number">1.3.</span> <span class="nav-text">3.代码格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-OOP规约"><span class="nav-number">1.4.</span> <span class="nav-text">4.OOP规约</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-集合处理"><span class="nav-number">1.5.</span> <span class="nav-text">5.集合处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-并发处理"><span class="nav-number">1.6.</span> <span class="nav-text">6.并发处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-控制语句"><span class="nav-number">1.7.</span> <span class="nav-text">7.控制语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-注释规约"><span class="nav-number">1.8.</span> <span class="nav-text">8.注释规约</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常日志"><span class="nav-number">2.</span> <span class="nav-text">异常日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-异常处理"><span class="nav-number">2.1.</span> <span class="nav-text">1. 异常处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-日志规约"><span class="nav-number">2.2.</span> <span class="nav-text">2.日志规约</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-单元测试"><span class="nav-number">2.3.</span> <span class="nav-text">3.单元测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-安全规约"><span class="nav-number">2.4.</span> <span class="nav-text">4.安全规约</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySql数据库"><span class="nav-number">3.</span> <span class="nav-text">MySql数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建表规约"><span class="nav-number">3.1.</span> <span class="nav-text">建表规约</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引规约"><span class="nav-number">3.2.</span> <span class="nav-text">索引规约</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-语句"><span class="nav-number">3.3.</span> <span class="nav-text">SQL 语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工程结构"><span class="nav-number">4.</span> <span class="nav-text">工程结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用分层"><span class="nav-number">4.1.</span> <span class="nav-text">应用分层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二方库依赖"><span class="nav-number">4.2.</span> <span class="nav-text">二方库依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器"><span class="nav-number">4.3.</span> <span class="nav-text">服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计规约"><span class="nav-number">5.</span> <span class="nav-text">设计规约</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐锐</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.4.4</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
